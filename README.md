@@ -5,9 +5,9 @@
 - pip install -r requirements.txt
 - python main.py
 ### Result
-![img1]()
-![img2]()
-![img3]()
-![img4]()
+![img1](https://github.com/huytuong010101/VoiceSegmentAndPitchEstimate/blob/main/outputs/0.jpg)
+![img2](https://github.com/huytuong010101/VoiceSegmentAndPitchEstimate/blob/main/outputs/1.jpg)
+![img3](https://github.com/huytuong010101/VoiceSegmentAndPitchEstimate/blob/main/outputs/2.jpg)
+![img4](https://github.com/huytuong010101/VoiceSegmentAndPitchEstimate/blob/main/outputs/3.jpg)
 
 
