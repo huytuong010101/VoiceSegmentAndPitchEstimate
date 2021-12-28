@@ -31,10 +31,18 @@ def plot_voice_segment(
         plt: pyplot
 ):
     # PLot audio and STE
+    plt.subplot(5, 1, 1).set_xlabel("sample")
+    plt.subplot(5, 1, 1).set_ylabel("STE value")
     plt.subplot(5, 1, 1).plot(time, ste, color="b")
     plt.subplot(5, 1, 1).set_title("STE value")
+    plt.subplot(5, 1, 2).set_xlabel("sample")
+    plt.subplot(5, 1, 2).set_ylabel("Amplitude")
     plt.subplot(5, 1, 2).plot(signal, color="b")
     plt.subplot(5, 1, 2).set_title("Audio")
+
+    id_color = {"Ground truth": u"g", "Predict": u"r"}
+    markers = [plt.Line2D([0, 0], [0, 0], color=color, marker='o', linestyle='') for color in id_color.values()]
+    plt.subplot(5, 1, 2).legend(markers, id_color.keys(), numpoints=1)
     # Plot predict
     for start, end in voice_segment:
         plt.subplot(5, 1, 2).axvline(x=start, color="r")
@@ -52,6 +60,8 @@ def plot_pitch_estimate(t: list, f: list, signal: np.array, plt: pyplot):
     f.insert(0, 0)
     t.append(len(signal))
     f.append(0)
+    plt.subplot(5, 1, 3).set_xlabel("sample")
+    plt.subplot(5, 1, 3).set_ylabel("Hz")
     plt.subplot(5, 1, 3).scatter(t, f, s=1)
     plt.subplot(5, 1, 3).set_title("F0 estimate")
 

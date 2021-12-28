@@ -30,7 +30,7 @@ if __name__ == '__main__':
         print("======================================")
         print("Processing on", wav_file)
         plt.figure(wav_file)
-
+        # Read audio and label
         fs, signal = wavfile.read(filename=wav_file)
         label = load_label(wav_file.split(".")[0] + ".lab")
         # Voice segment
@@ -41,11 +41,15 @@ if __name__ == '__main__':
         plot_pitch_estimate(t, f, signal, plt)
         # Plot debug
         if pitch_estimation.voice_fft is not None:
+            plt.subplot(5, 1, 4).set_xlabel("Hz")
+            plt.subplot(5, 1, 4).set_ylabel("Db")
             plt.subplot(5, 1, 4).plot(pitch_estimation.voice_fft)
-            plt.subplot(5, 1, 4).set_title("Spectral of Voice frame")
+            plt.subplot(5, 1, 4).set_title("Spectrum of Voice frame")
         if pitch_estimation.unvoice_fft is not None:
+            plt.subplot(5, 1, 5).set_xlabel("Hz")
+            plt.subplot(5, 1, 5).set_ylabel("Db")
             plt.subplot(5, 1, 5).plot(pitch_estimation.unvoice_fft)
-            plt.subplot(5, 1, 5).set_title("Spectral of Unvoice frame")
+            plt.subplot(5, 1, 5).set_title("Spectrum of Silent frame")
         # Evaluate segemnt
         error_segment = eval_segment(voice_segment, label, fs)
         print("Error segment:", error_segment)
@@ -56,6 +60,7 @@ if __name__ == '__main__':
         print(f"Mean: {mean}, error: {abs(mean - label['F0mean'])}")
         print(f"STD: {std}, error: {abs(std - label['F0std'])}")
         plt.tight_layout(h_pad=3)
+        plt.subplot(5, 1, 2).set_title(wav_file)
         plt.show(block=False)
     # plt.figure(4)
     # plt.hist(pitch_estimation.count_harmony)

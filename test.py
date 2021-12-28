@@ -11,8 +11,9 @@ plt.xlabel("Amplitude")
 plt.ylabel("Number of smaple")
 plt.title("Distribution of STE")
 plt.show()
-exit()
-threshold = 0.0005
+
+
+threshold = 0.002
 TRUE = FALSE = 0
 for item in u:
     if item < threshold:
